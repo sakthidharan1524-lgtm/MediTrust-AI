@@ -1,0 +1,6 @@
+{
+  "name": "MediTrust AI",
+  "description": "An end-to-end medicine trust, verification, and purchasing platform powered by Gemini AI for prescription OCR scans and medicine packaging authenticity checks.",
+  "requestFramePermissions": ["geolocation", "microphone", "camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
