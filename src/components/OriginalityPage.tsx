@@ -129,6 +129,10 @@ export default function OriginalityPage() {
       });
       const data = await res.json();
       
+      if (!res.ok) {
+        throw new Error(data.error || "Verification API error");
+      }
+      
       const isOriginal = data.isOriginal;
       setVerifyingStatus(isOriginal ? "success" : "suspicious");
 
@@ -140,7 +144,7 @@ export default function OriginalityPage() {
              verificationResult: {
                isOriginal: data.isOriginal,
                expiryDate: data.expiryDate,
-               reason: data.reason
+               reason: data.reason || "Processed successfully."
              },
              shop: {
                 ...o.shop,
@@ -154,9 +158,9 @@ export default function OriginalityPage() {
         return o;
       }));
       
-    } catch (e) {
-       console.error(e);
-       alert("Verification failed. Please try again.");
+    } catch (e: any) {
+       console.error("Verification error:", e);
+       alert("Verification failed: " + (e.message || "Please try again."));
        setVerifyingStatus("idle");
     }
   };

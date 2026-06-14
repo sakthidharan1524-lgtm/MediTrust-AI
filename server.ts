@@ -592,7 +592,7 @@ Provide your analysis in the following strict JSON schema format:
       return res.json(scanResult);
     } catch (err: any) {
       console.error("Gemini Scan Error:", err);
-      return res.status(500).json({ error: "Gemini server OCR error", details: err?.message || err });
+      return res.status(500).json({ error: "Gemini server OCR error", status: "failed", details: err?.message || err });
     }
   } else {
     // High-fidelity fallback Simulation Mode
